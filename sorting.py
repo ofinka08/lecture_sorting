@@ -23,18 +23,24 @@ def read_data(file_name):
     return data
 
 
-def selection_sort(numbers_list):
-    for numbers in range(len(numbers_list)):
-        for i in range(numbers+1, len(numbers_list)):
-            if numbers_list[i] < numbers_list[numbers]:
-                numbers_list[i], numbers_list[numbers] = numbers_list[numbers], numbers_list[i]
+def selection_sort(numbers_list, direction):
+    if direction == "vzostupne":
+        for numbers in range(len(numbers_list)):
+            for i in range(numbers+1, len(numbers_list)):
+                if numbers_list[i] < numbers_list[numbers]:
+                    numbers_list[i], numbers_list[numbers] = numbers_list[numbers], numbers_list[i]
+    else:
+        for numbers in range(len(numbers_list)):
+            for i in range(numbers+1, len(numbers_list)):
+                if numbers_list[i] > numbers_list[numbers]:
+                    numbers_list[i], numbers_list[numbers] = numbers_list[numbers], numbers_list[i]
     return numbers_list
 
 
 def main():
     numbers = read_data("numbers.csv")
-    numbers2 = numbers["series_3"]
-    sorted_numbers = selection_sort(numbers2)
+    numbers2 = numbers["series_1"]
+    sorted_numbers = selection_sort(numbers2, "zostupne")
     print(sorted_numbers)
 
 
